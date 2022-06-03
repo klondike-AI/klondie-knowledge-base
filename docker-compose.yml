@@ -1,0 +1,30 @@
+#/*************************************
+# SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com> and KLONDIKE S.r.l. <info@klondike.ai> 
+# SPDX-License-Identifier: AGPL-3.0-only 
+#************************************/
+
+version: '3'
+
+services:
+  notebooks:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      GRANT_SUDO: "yes"
+    ports:
+      - "5000-5200:5000-5200"
+    volumes:
+      - ./files:/home/jovyan/work/
+    working_dir: /home/jovyan/work/
+
+  mysql:
+    image: mysql:5.7
+    restart: always
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - 8890:3306
+    volumes:
+      - ./db/init:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: 'password'

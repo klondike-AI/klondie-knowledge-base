@@ -1,0 +1,33 @@
+language: it_core_news_lg
+pipeline:
+  - name: WhitespaceTokenizer
+  - name: RegexFeaturizer
+    case_sensitive: False
+  - name: LexicalSyntacticFeaturizer
+    case_sensitive: False
+  - name: CountVectorsFeaturizer
+    case_sensitive: False
+  - name: CountVectorsFeaturizer
+    analyzer: "char_wb"
+    min_ngram: 1
+    max_ngram: 4
+    case_sensitive: False
+  - name: DIETClassifier
+    epochs: 100
+    case_sensitive: False
+  - name: ResponseSelector
+    epochs: 100
+    case_sensitive: False
+
+policies:
+  - name: AugmentedMemoizationPolicy
+  - name: TEDPolicy
+    max_history: 7
+    epochs: 100
+  - name: MappingPolicy
+  - name: FormPolicy
+  - name: "FallbackPolicy"
+    nlu_threshold: 0.001
+    core_threshold: 0.07
+    ambiguity_threshold: 0.0
+    fallback_action_name: 'action_custom_fallback'

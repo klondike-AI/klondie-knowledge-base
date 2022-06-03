@@ -1,0 +1,45 @@
+<!--
+/*************************************
+* SPDX-FileCopyrightText: 2009-2020 Vtenext S.r.l. <info@vtenext.com> and KLONDIKE S.r.l. <info@klondike.ai> 
+* SPDX-License-Identifier: AGPL-3.0-only 
+************************************/
+-->
+
+<!DOCTYPE html>
+<html>
+	<body>
+	  <div id="webchat"></div>
+	  <script src="index.min.js"></script>
+	  <script>
+	    WebChat.default.init({
+	      selector: "#webchat",
+	      initPayload: "ciao",
+	      customData: {"language": "it"},
+	      socketUrl: "http://<ip>:<port1>",
+	      socketPath: "/socket.io/",
+	      title: "Klondie",
+	      //subtitle: "",
+	      params: {"storage": "session"}, // session: storia eliminata alla chiusura del browser; local: storia eliminata con svuotamento cache
+	      inputTextFieldHint: "Scrivi qui...",
+	      connectingText: "Connessione in corso...",
+	      hideWhenNotConnected: true, // se perde la connessione nasconde il bot
+	      showFullScreenButton: false, // possibilità di full screen
+	      displayUnreadCount: true,
+	      profileAvatar: false, // percorso all'avatar da visualizzare all'interno della chat
+          // openLauncherImage: '', // percorso dell'immagine da visualizzare nel pallino per aprire il chatbot
+          // closeLauncherImage: '', // percorso dell'immagine da visualizzare nel pallino dopo la chiusura del chatbot
+          mainColor: "#FDD261",
+          userBackgroundColor: "#ffe6bd",
+          buttonColor: "#804f00",
+          buttonBorderColor: "#ffcf80",
+          userTextColor: "#000000",
+          conversationBackgroundColor: "#FFFFFF",
+          assistTextColor: "#000000",
+          poweredBy: "powered by Klondike",
+          poweredByHref: "https://www.klondike.ai/index.php/bot-conversazionale/",
+          // assistBackgoundColor: "#ebf1f7"
+	    })
+	  </script>
+	</body>
+</html>
+

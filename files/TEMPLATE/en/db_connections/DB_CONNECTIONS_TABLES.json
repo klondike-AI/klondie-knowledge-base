@@ -1,0 +1,1 @@
+{host:"mysql", port:3306, database:"db", username:"user", password:"password"}
